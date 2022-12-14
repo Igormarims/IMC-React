@@ -60,7 +60,16 @@
 
  .container .rightSide {
    flex: 1;
-   background-color: black;
+   display: flex;
+   /* background-color: black; */
+ }
+
+ .rightSide .grid {
+   flex: 1;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 20px;
+
  }
 
 
