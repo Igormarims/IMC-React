@@ -1,9 +1,7 @@
- 
-
 import { Level } from '../../helpers/imc'
 import styles from './GridItem.module.css'
 import upImage from '../../assets/up.png'
-import downImage from '../../assets/down.png'
+import downImage from '../../assets/down.png' 
 
 type Props = {
      item: Level
@@ -17,6 +15,11 @@ const GridItem = ({item}: Props)=> {
                {/* {item.icon === 'up' &&  <img src={upImage} alt="imagem Up" width={30} /> } */}
                <img src={item.icon === 'down'? downImage : upImage} alt="imagem Down" width={30} />
              </div>
+              {item.yourImc &&
+                <div className={styles.yourImc}>Seu IMC é de {item.yourImc} kg/m² </div>
+
+              } 
+
              <div className={styles.gridTitle}>{item.title}</div>
              <div className={styles.gridInfo}>
                <>

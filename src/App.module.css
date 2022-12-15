@@ -72,5 +72,14 @@
 
  }
 
+ .rightSide  .rightBig {
+  flex: 1;
+   display: flex;
+   
+ }
 
+ .rightArrow {
+  display: flex;
+  flex: 1;
+ }
  

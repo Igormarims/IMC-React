@@ -2,16 +2,18 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import LOGO from './assets/powered.png'
-import { calculateImc, levels } from './helpers/imc'
+import { calculateImc, Level, levels } from './helpers/imc'
 import  GridItem  from './components/GridItem/GridItem.component'
 
 function App() {
   const [heightField, setHeightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
+  const [toShow, setToShow] = useState<Level | null>(null)
 
    const handleCalculateButton = ()=> {
         if(heightField && weightField){
-          
+        const showItem: Level | null = calculateImc(heightField, weightField)
+           setToShow(showItem);
         }else {
           alert('Digite todos os campos')
         }
@@ -46,11 +48,21 @@ function App() {
             <button onClick={handleCalculateButton}>Calcular</button>
         </div>
         <div className={styles.rightSide}>
+          { !toShow  &&
            <div className={styles.grid}>
                 {levels.map((itens, key)=> 
                   <GridItem key={key} item={itens}/>
                 ) }
-           </div>
+            </div>
+            }
+            {
+              toShow &&
+              <div className={styles.rightBig}>
+                <div className={styles.rightArrow}>
+                  <GridItem item={toShow}/>
+                </div>
+              </div>
+            }
         </div>
      </div>
     </div>
