@@ -54,9 +54,12 @@ function App() {
              onChange={e => setWeightField(parseFloat(e.target.value))}
              disabled={toShow? true : false}
             />
+            
             <button onClick={handleCalculateButton}
                    disabled={toShow? true : false}
                    >Calcular</button>
+
+           
         </div>
         <div className={styles.rightSide}>
           { !toShow  &&
