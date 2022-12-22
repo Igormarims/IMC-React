@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './App.module.css';
 import LOGO from './assets/powered.png'
 import { calculateImc, Level, levels } from './helpers/imc'
+import LeftArrowImage from '../src/assets/leftarrow.png';
 import  GridItem  from './components/GridItem/GridItem.component'
 
 function App() {
@@ -12,11 +13,17 @@ function App() {
 
    const handleCalculateButton = ()=> {
         if(heightField && weightField){
-        const showItem: Level | null = calculateImc(heightField, weightField)
-           setToShow(showItem);
+         
+           setToShow(calculateImc(heightField, weightField));
         }else {
           alert('Digite todos os campos')
         }
+   }
+
+   const handleMute = () => {
+        setToShow(null)
+        setHeightField(0)
+        setWeightField(0)
    }
 
   return (
@@ -38,14 +45,18 @@ function App() {
              placeholder='Digite a sua altura Ex: 1.5 (em metros)'
              value={heightField > 0 ? heightField: ''}
              onChange={e => setHeightField(parseFloat(e.target.value))}
+             disabled={toShow? true : false}
             />
             <input 
              type="number"
              placeholder='Digite a seu peso Ex: 75.3 (em kg)'
              value={weightField > 0 ? weightField: ''}
              onChange={e => setWeightField(parseFloat(e.target.value))}
+             disabled={toShow? true : false}
             />
-            <button onClick={handleCalculateButton}>Calcular</button>
+            <button onClick={handleCalculateButton}
+                   disabled={toShow? true : false}
+                   >Calcular</button>
         </div>
         <div className={styles.rightSide}>
           { !toShow  &&
@@ -58,6 +69,9 @@ function App() {
             {
               toShow &&
               <div className={styles.rightBig}>
+                <div onClick={handleMute} className={styles.rightArrow1}>
+                  <img src={LeftArrowImage} alt="" width={25} />
+                </div>
                 <div className={styles.rightArrow}>
                   <GridItem item={toShow}/>
                 </div>

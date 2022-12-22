@@ -16,12 +16,14 @@ export type Level = {
 
 
  export const calculateImc  =  (height: number, weight: number): Level | null => {
-   let imc =   weight / (height * height) 
+   let imc =   weight / (height * height)
      
         for(let i in levels) {
          if(imc >= levels[i].imc[0] && imc <= levels[i].imc[1]){
-                 levels[i].yourImc = parseFloat(imc.toFixed(2))
-                return levels[i];
+             let levelCopy = {...levels[i]}    
+             levelCopy.yourImc = parseFloat(imc.toFixed(2))  
+                return levelCopy;
+                
          }
      }
 

@@ -38,6 +38,12 @@
    outline: none;
  }
 
+ .leftSide input:disabled {
+  opacity: 0.5;
+  background-color: transparent;
+  outline: none;
+ }
+
  .leftSide button {
       
       background-color: #227c9d;
@@ -54,6 +60,10 @@
  .leftSide button:hover {
    opacity: .8;
    
+ }
+
+ .leftSide button:disabled {
+  opacity: 0.5;
  }
 
 
@@ -83,3 +93,18 @@
   flex: 1;
  }
  
+ .container .rightSide .rightArrow1 {
+     
+  position: absolute;
+  background-color: #227c9D;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: -35px;
+  margin-top: 145px;
+
+ }
